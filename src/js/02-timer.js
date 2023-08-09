@@ -92,16 +92,19 @@ const options = {
 };
 
 function onClick() {
-  setInterval(() => {
+  let timerID = setInterval(() => {
     // convertMs(startTime - Date.now());
+
     let result = convertMs(startTime - Date.now());
     refs.days.textContent = addLeadingZero(result.days);
     refs.hours.textContent = addLeadingZero(result.hours);
     refs.minutes.textContent = addLeadingZero(result.minutes);
     refs.seconds.textContent = addLeadingZero(result.seconds);
     if (
-      (refs.minutes.textContent === '00') &
-      (refs.seconds.textContent === '00')
+      refs.days.textContent === '00' &&
+      refs.hours.textContent === '00' &&
+      refs.minutes.textContent === '00' &&
+      refs.seconds.textContent === '00'
     ) {
       clearInterval(timerID);
     }
